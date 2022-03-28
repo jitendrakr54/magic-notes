@@ -26,7 +26,8 @@
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" id="searchText" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2" id="searchText" type="search" placeholder="Search"
+                        aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
@@ -35,19 +36,23 @@
 
     <div class="container my-3">
         <h3>Welcome to Magic Notes</h1>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Add note</h5>
-                <div class="mb-3">
-                    <textarea class="form-control" id="addTxt" rows="3"></textarea>
+            <div class="card">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <h5 class="card-title">Add title</h5>
+                        <input type="email" class="form-control" id="addTitle" aria-describedby="title" placeholder="Enter Title">
+                    </div>
+                    <h5 class="card-title">Add note</h5>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="addTxt" rows="3"></textarea>
+                    </div>
+                    <a href="#" class="btn btn-primary" id="addBtn">Add Note</a>
                 </div>
-                <a href="#" class="btn btn-primary" id="addBtn">Add Note</a>
             </div>
-        </div>
-        <hr>
-        <h3>Your Notes</h3>
-        <hr>
-        <div id="notes" class="row container-fluid"> </div>
+            <hr>
+            <h3>Your Notes</h3>
+            <hr>
+            <div id="notes" class="row container-fluid"> </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

@@ -4,16 +4,22 @@ document.onload = showNotes();
 let addBtn = document.getElementById('addBtn');
 addBtn.addEventListener('click', function () {
     let addTxt = document.getElementById('addTxt');
+    let addTitle = document.getElementById('addTitle');
     if(addTxt.value) {
         let notes = localStorage.getItem('notes');
-        let notesObj = [];
+        let notesArr = [];
         if (notes) {
-            notesObj = JSON.parse(notes);
+            notesArr = JSON.parse(notes);
         }
-        notesObj.push(addTxt.value);
-        localStorage.setItem('notes', JSON.stringify(notesObj));
+        let notesObj = {
+            title: addTitle.value,
+            text: addTxt.value
+        }
+        notesArr.push(notesObj);
+        localStorage.setItem('notes', JSON.stringify(notesArr));
         addTxt.value = "";
-        // console.log(notesObj);
+        addTitle.value = "";
+        // console.log(notesArr);
         showNotes();
     } else {
         alert("Please write something for a note!");
@@ -23,24 +29,24 @@ addBtn.addEventListener('click', function () {
 // function to show notes from local storage
 function showNotes() {
     let notes = localStorage.getItem('notes');
-    let notesObj = [];
+    let notesArr = [];
     if (notes) {
-        notesObj = JSON.parse(notes);
+        notesArr = JSON.parse(notes);
     }
     let html = "";
-    notesObj.forEach(function (element, index) {
+    notesArr.forEach(function (element, index) {
         html += `
                 <div class="noteCard my-2 mx-2 card row" style="width: 18rem;">
                     <div class="card-body">
-                    <h5 class="card-title">Note ${index+1} </h5>
-                    <p class="card-text">${element}</p>
+                    <h5 class="card-title">${element.title} </h5>
+                    <p class="card-text">${element.text}</p>
                     <a id=${index} onclick=deleteNote(this.id) class="btn btn-primary">Delete Note</a>
                     </div>
                 </div>
             `;
     });
     let noteElm = document.getElementById('notes');
-    if(notesObj.length) {
+    if(notesArr.length) {
         noteElm.innerHTML = html;
     } else {
         noteElm.innerHTML = "Nothing to show, Please add a note!";
@@ -51,12 +57,12 @@ function showNotes() {
 function deleteNote(index) {
     // console.log("Deleting note ", index);
     let notes = localStorage.getItem('notes');
-    let notesObj = [];
+    let notesArr = [];
     if(notes) {
-        notesObj = JSON.parse(notes);
+        notesArr = JSON.parse(notes);
     }
-    notesObj.splice(index, 1);
-    localStorage.setItem("notes", JSON.stringify(notesObj));
+    notesArr.splice(index, 1);
+    localStorage.setItem("notes", JSON.stringify(notesArr));
     showNotes();
 }
 
