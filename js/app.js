@@ -16,6 +16,8 @@ addBtn.addEventListener('click', function () {
         addTxt.value = "";
         console.log(notesObj);
         showNotes();
+    } else {
+        alert("Please write something for a note!");
     }
 });
 
