@@ -73,7 +73,7 @@ search.addEventListener('input', function() {
     // console.log(searchText);
     let noteCards = document.getElementsByClassName("noteCard");
     Array.from(noteCards).forEach(function(element){
-        let txt = element.getElementsByTagName('p')[0].innerText;
+        let txt = element.getElementsByTagName('h5')[0].innerText;
         if(txt.includes(searchText)) {
             element.style.display = "block";
             // console.log(txt);
